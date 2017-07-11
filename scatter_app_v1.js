@@ -51,11 +51,10 @@ d3.csv(url, function(data) {
     .domain([yExtents[1], 0])
     .range([0, graphHeight]);
 
-  var xAxis = d3.svg.axis().scale(xScale).orient("bottom");
   var xGridlinesAxis = d3.svg.axis().scale(xScale).orient("bottom");
-
-  var yAxis = d3.svg.axis().scale(yAxisScale).orient("left");
+  var xAxis = d3.svg.axis().scale(xScale).orient("bottom");
   var yGridlinesAxis = d3.svg.axis().scale(yAxisScale).orient("left");
+  var yAxis = d3.svg.axis().scale(yAxisScale).orient("left");
 
   var yGridlineNodes = svg.append('g')
     .attr('transform', 'translate(' + (margins.left + graphWidth) + ',' + margins.top + ')')
@@ -65,11 +64,14 @@ d3.csv(url, function(data) {
   styleGridlineNodes(yGridlineNodes);
 
   var xGridlineNodes = svg.append('g')
-    .attr('transform', 'translate(' + margins.left + ',' + (totalHeight - margins.bottom + axisPadding) + ')')
+    .attr('transform', 'translate(' + margins.left + ',' + (graphHeight + margins.top + axisPadding) + ')')
     .call(xGridlinesAxis
-      .tickSize(-graphWidth - axisPadding, 0, 0)
+      // the line below caused you literally 90+ min of trouble; for whatever
+      // reason, it was interacting strangely with '- graphHeight-axisPadding'
+      // as the first param. 
+      .tickSize(-graphHeight, 0, 0)
       .tickFormat(""));
-  styleXGridlineNodes(xGridlineNodes);
+  styleGridlineNodes(xGridlineNodes);
 
   var yAxisNodes = svg.append('g')
     .attr('transform', 'translate(' + (margins.left - axisPadding) + ',' + margins.top + ')')
@@ -135,21 +137,5 @@ function styleGridlineNodes(axisNodes) {
       fill: 'none',
       'stroke-width': 1,
       stroke: 'lightgray',
-    });
-}
-
-function styleXGridlineNodes(axisNodes) {
-  axisNodes.selectAll('.domain')
-    .attr({
-      fill: 'none',
-      stroke: 'none'
-    });
-  axisNodes.selectAll('.tick line')
-    .attr({
-      fill: 'none',
-      'stroke-width': 1,
-      stroke: 'lightgray',
-      // y2: margins.bottom,
-      // y1: margins.top
     });
 }
