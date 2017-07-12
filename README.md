@@ -1,4 +1,4 @@
-### TAP Scatter Plot:
+# TAP Scatter Plot:
 
 Y Paul Sussman: July 11th, 2017; Version 1.0
 
@@ -30,3 +30,8 @@ Navigate to `localhost:8000` in your browser.
 There were two major goals I wanted to achieve with this project. The first was to _build_ something with D3.js, rather than continuing to read through examples -- to take a dataset I was unfamiliar with, and to visually render it in an approachable way. I'm happy with those results, though some questions (_how to inject regular expressions into_ `d3.tickFormat()`_, for example, or how to create zoom-responsive circle radii_) will require further research.
 
 The second was to make something outside of the greenfield format I'd become used to. The life of a junior developer is one of frequent work on mature codebases, and so I'd wanted to practice reading and adapting code that was both preexisting and largely uncommented. Here, too, I had a fun experience -- though I imagine the process will be different when I try it with an actual full-stack application.
+
+## Demo
+<p align="center">
+  <img src="tap_walkthrough.gif" alt="walkthrough gif"/>
+</p>
