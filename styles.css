@@ -1,0 +1,43 @@
+div.tooltip {
+  position: absolute;
+  text-align: center;
+  width: 8em;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  /*height: 28px;*/
+  padding: 2px;
+  font: 12px sans-serif;
+  background: lightsteelblue;
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+body {
+  text-align: center;
+}
+
+h1,
+span {
+  margin: 0 auto;
+  font-family: Verdana, Geneva, sans-serif
+}
+
+.uni{
+  font-size: 1.5em;
+  vertical-align: baseline;
+}
+
+.box {
+  display: inline-block;
+  padding: 10px;
+  border-radius: 100px;
+}
+
+.steelblue {
+  background: steelblue;
+}
+
+.salmon {
+  background: salmon;
+}
